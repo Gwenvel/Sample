@@ -1,0 +1,60 @@
+@model test2.Models.Request
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkRequest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WorkRequest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Urgent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Urgent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pending)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pending)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InProgress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InProgress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Closed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Closed)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RequestId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

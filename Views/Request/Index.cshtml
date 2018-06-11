@@ -1,0 +1,184 @@
+@model IEnumerable<test2.Models.Request>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+    <div>
+    
+    <table class="table table-hover">
+       <p>Pending Requests</p> 
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkRequest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Urgent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pending)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InProgress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        @if(item.Closed == false)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkRequest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Urgent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pending)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InProgress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Closed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                @if (ViewBag.checker == "Admin")
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.RequestId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.RequestId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.RequestId">Delete</a>
+                    </td>
+                }
+                else
+                {
+                    @if (item.InProgress == true)
+                    {
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.RequestId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.RequestId">Delete</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.RequestId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.RequestId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.RequestId">Delete</a>
+                        </td>
+                    }
+                }
+                
+            </tr>
+        }
+            
+    }
+        </tbody>
+        </table>
+    </div>
+<hr>
+    <div>
+    
+
+    <table class="table">
+        <p>Closed Requests</p>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkRequest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Urgent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pending)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InProgress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    @if(item.Closed == true)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkRequest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Urgent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pending)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InProgress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Closed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+        </tr>
+    }
+        
+}
+    </tbody>
+
+    </table>
+</div>
+
+
+
+
+
